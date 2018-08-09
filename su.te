@@ -24,6 +24,9 @@ userdebug_or_eng(`
   net_domain(su)
   app_domain(su)
 
+  # Allow private apps (like masquerade) to use su
+  allow system_app su_exec:file { execute_no_trans getattr open read execute };
+
   dontaudit su self:capability_class_set *;
   dontaudit su kernel:security *;
   dontaudit su kernel:system *;
